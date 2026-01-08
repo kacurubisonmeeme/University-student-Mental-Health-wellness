@@ -1,50 +1,85 @@
-University Student Mental Health Wellness
-Overview
-This project aims to assist the University Counseling Center in proactively managing student mental health. By analyzing student data including academic performance, sleep habits, and self reported pressure levels we developed a predictive classification model to identify students at risk of depression. This "early warning system" allows counselors to intervene before a crisis occurs, shifting from a reactive to a proactive support model.
+# 🎓 University Student Mental Health Wellness
 
-Business Understanding
-Stakeholder: University Counseling Center.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Library](https://img.shields.io/badge/Library-Scikit--Learn-orange)
+![Status](https://img.shields.io/badge/Status-Complete-green)
 
-Problem: Counseling services are currently reactive, relying on students to seek help on their own. This often means interventions happen only after a student’s mental health has significantly deteriorated.
+**A machine learning initiative to proactively identify students at risk of depression using academic and lifestyle data.**
 
-Goal: Build a Machine Learning model that uses existing student data to flag those at high risk of depression, enabling targeted, early outreach.
+---
 
-The Dataset: We utilized a dataset of approximately 28,000 student records, containing features such as CGPA, sleep duration, dietary habits, and self reported academic/work pressure.
+## 📖 Overview
+The University Counseling Center is currently overwhelmed by a reactive support model—students are often only identified *after* a crisis occurs. This project utilizes a dataset of **28,000+ student records** to build a predictive "Early Warning System." By analyzing factors like GPA, sleep duration, and academic pressure, we can flag high-risk students early and intervene before their mental health deteriorates.
 
-Modeling Approach
-We adopted an iterative modeling process to balance predictive power with explainability:
+---
 
-Baseline Model (Logistic Regression): Established a strong baseline with ~84.6% accuracy, proving that linear relationships exist between academic stress and depression.
+## 💼 Business Understanding
 
-Complex Model (Random Forest): Deployed an ensemble method to capture non-linear patterns. While it offered high accuracy (~84.2%), it acts as a "Black Box," offering little insight into why a specific student was flagged.
+| **Feature** | **Description** |
+| :--- | :--- |
+| **Stakeholder** | **University Counseling Center** |
+| **The Problem** | Reactive care leads to missed opportunities for early intervention. |
+| **The Goal** | Deploy a classification model to identify at-risk students proactively. |
+| **The Data** | Academic records (CGPA), lifestyle (Sleep, Diet), and self-reported Pressure. |
 
-The "Glass Box" (Decision Tree): Our final model of choice. It achieved comparable accuracy (~82.4%) while providing full transparency. Counselors can view the exact decision path (e.g., "Student has Suicidal Thoughts AND High Academic Pressure") that led to the risk flag.
+---
 
-Note: All models were tuned using GridSearchCV to ensure optimal performance without overfitting.
+## 🤖 Modeling Approach & Results
 
-Evaluation
-The models were evaluated using Accuracy and ROC-AUC scores to ensure they could distinguish between depressed and healthy students effectively.
+We approached this as a tournament between three model types to balance **Accuracy** against **Interpretability**. All models were tuned using `GridSearchCV`.
 
-Key Findings:
+### The Model Showdown
 
-Academic Stress is the #1 Predictor: Feature Importance analysis revealed that CGPA and Academic Pressure are the strongest indicators of depression risk.
+| Model Type | Algorithm | Accuracy | The Verdict |
+| :--- | :--- | :--- | :--- |
+| **Baseline** | Logistic Regression | **84.6%** | Strong start, proving linear relationships exist. |
+| **The "Black Box"** | Random Forest | **84.2%** | High accuracy, but difficult to explain "why" a student is flagged. |
+| **The "Glass Box"** 🏆 | **Decision Tree** | **82.4%** | **WINNER.** Slightly lower accuracy, but offers 100% transparency on decision logic. |
 
-Transparency Wins: While the Logistic Regression and Random Forest models were slightly more accurate numerically, the Decision Tree was selected for deployment because its interpretability builds trust with clinical staff.
+> **Why the Decision Tree?**
+> In mental health, trust is paramount. While the Random Forest was slightly more robust, the **Decision Tree** allows a counselor to see the exact path (e.g., *"Suicidal Thoughts = Yes" → "Academic Pressure = High"*) that led to the risk flag.
 
-Conclusion & Recommendations
-This project demonstrates that student data can reliably predict depression risk without requiring complex, opaque AI systems. By deploying the Decision Tree model, the University Counseling Center gains a transparent diagnostic tool that aligns with their clinical workflow.
+---
 
-Actionable Recommendations:
+## 📊 Evaluation & Visuals
 
-Gradebook Integration: Since CGPA is a top predictor, integrate the model with the registrar's system to trigger automated check-ins when a student's rolling GPA drops below a risk threshold.
+### Key Risk Drivers
+Our analysis identified that academic factors are the loudest signals for depression risk.
 
-Academic Relief Valves: Acknowledge academic pressure as a health risk. Implement specific stress-management interventions (e.g., "Life Happens" assignment extensions) during high-pressure periods like midterms and finals.
+* **#1 Predictor:** `CGPA` (Grades)
+* **#2 Predictor:** `Academic Pressure`
 
-Data Enhancement: Improve the collection of financial stress data in intake forms to close gaps identified during modeling.
+### Decision Logic
+Below is a visualization of the Decision Tree model (The "Glass Box"), showing the transparent logic flow used to assess student risk.
 
-Repository Structure
-├── data/                # Dataset used for analysis
-├── images/              # Visualizations for README and presentation
-├── student_depression_prediction.ipynb  # Main Jupyter Notebook
-├── presentation.pdf     # Non-technical presentation slides
-└── README.md            # Project overview (this file)
+![Decision Tree Visualization](images/output%203.png)
+*(Note: Ensure your image file is named correctly in the 'images' folder)*
+
+---
+
+## 💡 Recommendations
+
+Based on our findings, we propose three strategic actions for the university:
+
+1.  **🎓 "Early Warning" Gradebook Integration**
+    * **Insight:** CGPA is the strongest predictor.
+    * **Action:** Integrate the model with the registrar. Automatically trigger a "We Care" check-in email from student services when a student's rolling GPA drops below the identified risk threshold.
+
+2.  **🛑 Academic Relief Valves**
+    * **Insight:** "High" Academic Pressure is a critical risk factor.
+    * **Action:** Treat exam periods as mental health events. Deploy "Life Happens" tokens (no-questions-asked extensions) and stress-management workshops during midterms and finals.
+
+3.  **📝 Data Enhancement**
+    * **Insight:** Financial stress is a known risk but had data gaps in our set.
+    * **Action:** Standardize the collection of financial aid and stress data during student intake to improve future model precision.
+
+---
+
+## 📂 Repository Structure
+
+```text
+├── data/                               # Dataset files
+├── images/                             # Generated plots and decision tree visuals
+├── student_depression_prediction.ipynb # Main analysis and modeling notebook
+├── presentation.pdf                    # Non-technical slide deck
+└── README.md                           # Project documentation
