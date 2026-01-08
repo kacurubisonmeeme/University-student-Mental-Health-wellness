@@ -1,6 +1,6 @@
 University Student Mental Health Wellness
 Overview
-This project aims to assist the University Counseling Center in proactively managing student mental health. By analyzing student data—including academic performance, sleep habits, and self-reported pressure levels—we developed a predictive classification model to identify students at risk of depression. This "early warning system" allows counselors to intervene before a crisis occurs, shifting from a reactive to a proactive support model.
+This project aims to assist the University Counseling Center in proactively managing student mental health. By analyzing student data including academic performance, sleep habits, and self reported pressure levels we developed a predictive classification model to identify students at risk of depression. This "early warning system" allows counselors to intervene before a crisis occurs, shifting from a reactive to a proactive support model.
 
 Business Understanding
 Stakeholder: University Counseling Center.
@@ -9,7 +9,7 @@ Problem: Counseling services are currently reactive, relying on students to seek
 
 Goal: Build a Machine Learning model that uses existing student data to flag those at high risk of depression, enabling targeted, early outreach.
 
-The Dataset: We utilized a dataset of approximately 28,000 student records, containing features such as CGPA, sleep duration, dietary habits, and self-reported academic/work pressure.
+The Dataset: We utilized a dataset of approximately 28,000 student records, containing features such as CGPA, sleep duration, dietary habits, and self reported academic/work pressure.
 
 Modeling Approach
 We adopted an iterative modeling process to balance predictive power with explainability:
