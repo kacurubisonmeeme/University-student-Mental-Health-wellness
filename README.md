@@ -52,8 +52,7 @@ Our analysis identified that academic factors are the loudest signals for depres
 ### Decision Logic
 Below is a visualization of the Decision Tree model (The "Glass Box"), showing the transparent logic flow used to assess student risk.
 
-![Decision Tree](images/output%203.png)
-
+!https://github.com/kacurubisonmeeme/University-student-Mental-Health-wellness/blob/main/Decision%20Tree.png
 
 
 ---
