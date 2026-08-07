@@ -1,0 +1,56 @@
+{
+  "model_showdown_accuracy_pct": {
+    "Logistic Regression": 84.5,
+    "Random Forest": 83.7,
+    "Decision Tree": 82.2
+  },
+  "deployed_model": "Decision Tree",
+  "deployed_model_classification_report": {
+    "No Depression": {
+      "precision": 0.8116147308781869,
+      "recall": 0.7431906614785992,
+      "f1-score": 0.7758970886932972,
+      "support": 2313.0
+    },
+    "Depression": {
+      "precision": 0.82842287694974,
+      "recall": 0.8778696051423324,
+      "f1-score": 0.8524297815425769,
+      "support": 3267.0
+    },
+    "accuracy": 0.8220430107526882,
+    "macro avg": {
+      "precision": 0.8200188039139635,
+      "recall": 0.8105301333104658,
+      "f1-score": 0.814163435117937,
+      "support": 5580.0
+    },
+    "weighted avg": {
+      "precision": 0.8214556293039511,
+      "recall": 0.8220430107526882,
+      "f1-score": 0.8207057459582786,
+      "support": 5580.0
+    }
+  },
+  "n_records_used": 27898,
+  "feature_cols": [
+    "Gender",
+    "Age",
+    "Academic Pressure",
+    "CGPA",
+    "Study Satisfaction",
+    "Sleep Duration",
+    "Dietary Habits",
+    "Have you ever had suicidal thoughts ?",
+    "Work/Study Hours",
+    "Financial Stress",
+    "Family History of Mental Illness"
+  ],
+  "top_predictors": [
+    "Have you ever had suicidal thoughts ?",
+    "Academic Pressure",
+    "Financial Stress",
+    "Age",
+    "Sleep Duration"
+  ]
+}
