@@ -13,19 +13,28 @@ Deploy free:  push this file + model.pkl + encoders.pkl to a public
 
 import pickle
 import json
+import os
 import pandas as pd
 import streamlit as st
 
 st.set_page_config(page_title="Student Mental Health Early-Warning Tool",
                     page_icon="🎓", layout="centered")
 
+# Resolve file paths relative to this script's own folder, not the process's
+# working directory — Streamlit Cloud runs apps with cwd set to the repo
+# root, so a bare "model.pkl" fails if app.py lives in a subfolder.
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def _path(filename):
+    return os.path.join(APP_DIR, filename)
+
 @st.cache_resource
 def load_artifacts():
-    with open("model.pkl", "rb") as f:
+    with open(_path("model.pkl"), "rb") as f:
         model = pickle.load(f)
-    with open("encoders.pkl", "rb") as f:
+    with open(_path("encoders.pkl"), "rb") as f:
         encoders = pickle.load(f)
-    with open("metrics.json", "r") as f:
+    with open(_path("metrics.json"), "r") as f:
         metrics = json.load(f)
     return model, encoders, metrics
 
@@ -132,8 +141,8 @@ with st.expander("Model showdown & performance details"):
              "accurate Random Forest because its decision path is fully transparent, "
              "which matters when a human is acting on the flag.")
     st.write("**Top predictors:**", ", ".join(metrics["top_predictors"]))
-    st.image("feature_importance.png")
-    st.image("decision_tree.png", caption="Decision path (top 3 levels)")
+    st.image(_path("feature_importance.png"))
+    st.image(_path("decision_tree.png"), caption="Decision path (top 3 levels)")
 
 st.divider()
 st.caption(
