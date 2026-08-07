@@ -4,6 +4,8 @@
 ![Library](https://img.shields.io/badge/Library-Scikit--Learn-orange)
 ![Status](https://img.shields.io/badge/Status-Complete-green)
 
+**[🔴 Run a Screening →](https://university-student-mental-health-wellness-42b2gadvv34gychvyzjk.streamlit.app/)**
+
 **A machine learning initiative to proactively identify students at risk of depression using academic and lifestyle data.**
 
 ---
